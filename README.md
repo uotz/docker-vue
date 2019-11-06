@@ -15,7 +15,7 @@ https://hub.docker.com/r/uotz/vuejs
 
   `MAINTAINER 'uotz'`
 
-3. Define the user that will be used will be the node
+3. Define the user that will be used in the image
 
   `USER node`
 
@@ -23,7 +23,7 @@ https://hub.docker.com/r/uotz/vuejs
 
   `RUN mkdir -p /home/node/app`
 
-5. I defined the node global configuration file
+5. Defined the node global configuration file
 
   `ENV NPM_CONFIG_PREFIX=/home/node/.npm-global`
 
@@ -44,7 +44,7 @@ https://hub.docker.com/r/uotz/vuejs
 
 If you create a project or if you already have a project started, you must have docker-compose.yaml inside the application root folder.	
 
-* Preparing the docker make up	
+* Preparing the docker compose default file	
 
   `cd your-project/ && touch docker-compose.yaml`	
 
