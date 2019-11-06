@@ -41,19 +41,19 @@ If you create a project or if you already have a project started, you must have 
 > `cd your-project/ && touch docker-compose.yaml`	
 * Paste the code below into the docker-compose.yml file	
 
-> ```	
-version: '3'	
-services:	
-  web:	
-    user: node	
-    image: uotz/vuejs	
-    command: >	
-      bash -c "npm run serve"	
-    volumes:	
-      - .:/home/node/app	
-    ports:	
-      - 8080:8080	
-```	
+
+    version: '3'	
+    services:	
+      web:	
+        user: node	
+        image: uotz/vuejs	
+        command: >	
+          bash -c "npm run serve"	
+        volumes:	
+          - .:/home/node/app	
+        ports:	
+          - 8080:8080	
+
 * Create your project	
 
 > This command will create a new project vue	
@@ -63,5 +63,8 @@ services:
 > `docker-compose run web npm install`	
 * Start Your project 	
 
-> This command will start your project, and you can access it from: `http://localhost:8080`	
+> This command will start your project
+
 > `docker-compose up`
+
+> Access it from: `http://localhost:8080`	
