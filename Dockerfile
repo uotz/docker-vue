@@ -1,10 +1,16 @@
-FROM node:12
+FROM node:14
 
 MAINTAINER 'uotz'
 
-RUN mkdir -p /home/app
+ARG UID=1000
+ARG GID=1000
 
-RUN chown -R node:node /home/app
+RUN groupmod -g ${GID} node \
+  && usermod -u ${UID} -g node node \
+  && mkdir -p /home/app \
+  && chown -hR node:node \
+  /home/app \
+  /usr/local/
 
 USER node
 
@@ -17,3 +23,5 @@ ENV PATH="/home/node/.npm-global/bin:${PATH}"
 RUN npm install -g @vue/cli
 
 WORKDIR /home/app
+
+CMD ["npm", "run", "serve"]
