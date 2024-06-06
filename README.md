@@ -1,41 +1,32 @@
 # Vuejs #
 
-This is a **vuejs** image that is based on the **node** image.
+This is an image to run **vuejs** that is based on the **node:20**.
 
 ## Understanding the Dockerfile ##
 
 1. Indicates which image will be used
 
-  `FROM node:10`
+  `FROM node:20`
 
-2. Specify image maintainer
-
-  `MAINTAINER 'uotz'`
-
-3. Define the user that will be used in the image
+2. Define the user that will be used in the image
 
   `USER node`
 
-4. Create application folder as user node
+3. Create application folder as user node
 
   `RUN mkdir -p /home/node/app`
 
-5. Defined the node global configuration file
+4. Defined the node global configuration file
 
   `ENV NPM_CONFIG_PREFIX=/home/node/.npm-global`
 
-6. Transfer npm executables to bash global commands
+5. Transfer npm executables to bash global commands
 
   `ENV PATH="/home/node/.npm-global/bin:${PATH}"`
 
-7. Install vuejs
-
-  `RUN npm install -g @vue/cli`
-
-8. Set application workdir
+6. Set application workdir
 
   `WORKDIR /home/node/app`
-
 
 ### Get Started With Docker Compose ####
 
@@ -47,10 +38,9 @@ If you create a project or if you already have a project started, you must have 
 
 * Paste the code below into the docker-compose.yml file	
 
-        version: '3'	
         services:	
           web:	
-            user: node	
+            user: node
             image: uotz/vuejs	
             command: >	
               bash -c "npm run serve"	
@@ -58,17 +48,13 @@ If you create a project or if you already have a project started, you must have 
               - .:/home/node/app	
             ports:	
               - 8080:8080	
-
-* Create your project	(This command will create a new project vue)
-
-  `docker-compose run web vue create .`	
   
 * **Run the command if the project already exists (optional)**	
 
-  `docker-compose run web npm install`	
+  `docker compose run web npm install`	
 
 * Start Your project 	
 
-  `docker-compose up`
+  `docker compose up`
 
 > Access it from: `http://localhost:8080`	
